@@ -1,0 +1,16 @@
+# Gizli bilgiler
+.env
+notepads/.env
+
+# Yeniden uretilebilir / buyuk
+rag_docs/chroma_store/
+rag_docs/*.pdf
+*.zip
+
+# Otomatik olusan
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Proje belgeleri (depoya eklenmiyor)
+docs/

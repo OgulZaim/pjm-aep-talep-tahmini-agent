@@ -1,0 +1,641 @@
+{
+  "name": "Grid Demand Response Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "grid-forecast",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1312,
+        224
+      ],
+      "id": "1b3e8e5d-6e0a-48fe-bd03-00729c31c041",
+      "name": "Webhook",
+      "webhookId": "e2351b7c-f9af-43c7-ade8-7b2a6db45292"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            {
+              "id": "check-reserve",
+              "leftValue": "={{ $json.body.decision }}",
+              "rightValue": "activate_reserve",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and",
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1024,
+        64
+      ],
+      "id": "30798255-a5db-4e1a-a27c-7bf43e829bf2",
+      "name": "Activate Reserve?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            {
+              "id": "check-alert",
+              "leftValue": "={{ $json.body.decision }}",
+              "rightValue": "demand_response_alert",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and",
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -784,
+        224
+      ],
+      "id": "ab978ca3-3566-4979-afad-ad1bb0663a3c",
+      "name": "Demand Response?"
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "=Grid Alert: Reserve Activation Recommended - Status: {{ $json.body.status }}",
+        "message": "=Justification: {{ $json.body.justification }}\nReasoning: {{ $json.body.reasoning_steps }}\nUncertainty: {{ $json.body.uncertainty }}",
+        "options": {
+          "sendTo": "ogulzaim@gmail.com"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -544,
+        -96
+      ],
+      "id": "10e1128e-c32a-4b0c-bca5-eb8c414a701e",
+      "name": "Gmail - Reserve Alert",
+      "webhookId": "dd371851-419c-42df-83b9-b178aeddc84e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "BvPkwGuMOIA0ehHp",
+          "name": "Gmail account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1r1qcTJGFe3HDjZDTB3epsKMNOsHrOGmS6ZNfL_ASagM/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Decisions",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1r1qcTJGFe3HDjZDTB3epsKMNOsHrOGmS6ZNfL_ASagM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Timestamp": "={{ $now.toFormat('yyyy-MM-dd HH:mm') }}",
+            "Status": "={{ $json.body.status }}",
+            "Decision": "={{ $json.body.decision }}",
+            "Justification": "={{ $json.body.justification }}",
+            "Uncertainty": "={{ $json.body.uncertainty }}",
+            "Reasoning": "={{ $json.body.reasoning_steps }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Decision",
+              "displayName": "Decision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Justification",
+              "displayName": "Justification",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Uncertainty",
+              "displayName": "Uncertainty",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reasoning",
+              "displayName": "Reasoning",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -544,
+        64
+      ],
+      "id": "4ce2e8ee-ed93-4206-b564-ae9f6dbf3cdf",
+      "name": "Sheets - Reserve Log",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "VB4tgAih3DJUBIXZ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1r1qcTJGFe3HDjZDTB3epsKMNOsHrOGmS6ZNfL_ASagM/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Decisions",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1r1qcTJGFe3HDjZDTB3epsKMNOsHrOGmS6ZNfL_ASagM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Timestamp": "={{ $now.toFormat('yyyy-MM-dd HH:mm') }}",
+            "Decision": "={{ $json.body.decision }}",
+            "Justification": "={{ $json.body.justification }}",
+            "Uncertainty": "={{ $json.body.uncertainty }}",
+            "Status": "={{ $json.body.status }}",
+            "Reasoning": "={{ $json.body.reasoning_steps }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Decision",
+              "displayName": "Decision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Justification",
+              "displayName": "Justification",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Uncertainty",
+              "displayName": "Uncertainty",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reasoning",
+              "displayName": "Reasoning",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -544,
+        224
+      ],
+      "id": "9a79a0b8-4399-48b6-a49f-47340b733b48",
+      "name": "Sheets - Alert Log",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "VB4tgAih3DJUBIXZ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1r1qcTJGFe3HDjZDTB3epsKMNOsHrOGmS6ZNfL_ASagM/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Decisions",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1r1qcTJGFe3HDjZDTB3epsKMNOsHrOGmS6ZNfL_ASagM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Timestamp": "={{ $now.toFormat('yyyy-MM-dd HH:mm') }}",
+            "Status": "={{ $json.body.status }}",
+            "Decision": "={{ $json.body.decision }}",
+            "Justification": "={{ $json.body.justification }}",
+            "Uncertainty": "={{ $json.body.uncertainty }}",
+            "Reasoning": "={{ $json.body.reasoning_steps }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Decision",
+              "displayName": "Decision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Justification",
+              "displayName": "Justification",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Uncertainty",
+              "displayName": "Uncertainty",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reasoning",
+              "displayName": "Reasoning",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -544,
+        384
+      ],
+      "id": "8f100a50-3346-4ccc-a6bf-3e25900237fb",
+      "name": "Sheets - Normal Log",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "VB4tgAih3DJUBIXZ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1r1qcTJGFe3HDjZDTB3epsKMNOsHrOGmS6ZNfL_ASagM/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1758105983,
+          "mode": "list",
+          "cachedResultName": "Errors",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1r1qcTJGFe3HDjZDTB3epsKMNOsHrOGmS6ZNfL_ASagM/edit#gid=1758105983"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Error": "={{ $json.error.message }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Error",
+              "displayName": "Error",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -304,
+        -176
+      ],
+      "id": "c4b3b076-a209-4ef0-8516-f96217364c97",
+      "name": "Sheets - Error Log",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "VB4tgAih3DJUBIXZ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "9d6b5cdc-359a-42b9-88d0-84b61d2e4b65",
+              "leftValue": "={{ $json.body.uncertainty }}",
+              "rightValue": "high",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1040,
+        384
+      ],
+      "id": "75ba983c-0348-4945-8b2c-64b5e20dd63c",
+      "name": "High Uncertainty?"
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "=Low-Confidence Decision Review Needed - Status: {{ $json.body.status }}",
+        "message": "=Justification: {{ $json.body.justification }}\nReasoning: {{ $json.body.reasoning_steps }}\nUncertainty: {{ $json.body.uncertainty }}",
+        "options": {
+          "sendTo": "ogulzaim@gmail.com"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -832,
+        576
+      ],
+      "id": "44bed3c6-3caa-44e8-9a82-a78bdfb415f6",
+      "name": "Gmail - Uncertainty Review",
+      "webhookId": "9c44658a-381d-411e-b1c3-9f1d83081edc",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "BvPkwGuMOIA0ehHp",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Activate Reserve?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "High Uncertainty?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Activate Reserve?": {
+      "main": [
+        [
+          {
+            "node": "Gmail - Reserve Alert",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Sheets - Reserve Log",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Demand Response?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Demand Response?": {
+      "main": [
+        [
+          {
+            "node": "Sheets - Alert Log",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sheets - Normal Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail - Reserve Alert": {
+      "main": [
+        [
+          {
+            "node": "Sheets - Reserve Log",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sheets - Error Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "High Uncertainty?": {
+      "main": [
+        [
+          {
+            "node": "Gmail - Uncertainty Review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "f58ccde0-f181-4c2d-8da3-e263ffe6fb68",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e902635be0ee76ca14aeb4f5509de99dfca82d22569ba1062c8d8b7db5ade40b"
+  },
+  "nodeGroups": [],
+  "id": "T4jPdhLykZKThe8H",
+  "tags": []
+}

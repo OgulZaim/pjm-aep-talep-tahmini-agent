@@ -1,0 +1,28 @@
+{
+  "end_to_end_examples": {
+    "example_yillik_zirve": {
+      "actual_datetime": "2018-07-10 16:00:00",
+      "demand_forecast": {
+        "region": "AEP",
+        "forecast_mw": 21576,
+        "confidence_interval": [
+          20986,
+          22166
+        ]
+      },
+      "grid_status": {
+        "available_capacity_mw": 25570,
+        "time_period": "day",
+        "capacity_source": "simulated_from_PJM_2027-2028_IRM_20pct"
+      },
+      "agent_decision": {
+        "reasoning_steps": "Forecasted demand of 21,576 MW (upper CI 22,166 MW) is well below the available capacity of 25,570 MW, maintaining a reserve margin of approximately 18.5% during the day period. Because capacity comfortably covers demand within standard IRM levels, no reserve activation or emergency alerts are required.",
+        "status": "normal",
+        "decision": "normal_operation",
+        "justification": "Current available capacity provides an adequate ~18.5% reserve margin above forecasted load, satisfying operating requirements and eliminating the need for a Maximum Generation Emergency / Load Management Alert or EEA1 declaration.",
+        "uncertainty": "low",
+        "confidence_note": "All necessary forecast and grid capacity data are provided and consistent; no assumptions made."
+      }
+    }
+  }
+}
