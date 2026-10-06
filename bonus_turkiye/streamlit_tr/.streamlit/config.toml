@@ -1,0 +1,10 @@
+[server]
+address = "127.0.0.1"          # yalnizca bu bilgisayardan erisim
+port = 8501
+headless = true
+
+[browser]
+gatherUsageStats = false       # Streamlit'e kullanim istatistigi gonderilmesin
+
+[theme]
+primaryColor = "#1B98A4"

@@ -1,0 +1,739 @@
+{
+  "name": "TR Grid Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "15 16 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -704,
+        400
+      ],
+      "id": "f61033b8-2734-45c4-8385-711ece9af8f2",
+      "name": "Her Gun 16:15"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Servis yaniti (POST /karar/calistir) -> ortak alanlar\nreturn $input.all().map(item => {\n  const s = item.json, c = s.cikti || {}, o = s.ozet || {};\n  const uyari = c.veri_uyarilari || [];\n  return { json: {\n    gun: o.gun, status: c.durum, decision: c.karar, priority: c.oncelik,\n    tightest_hour: o.en_dar_saat, min_margin: o.en_dusuk_marj, min_margin_conservative: o.en_dusuk_marj_temkinli,\n    summary: c.ozet || '', reasons: (c.gerekceler || []).join(' | '),\n    citations: (c.mevzuat_atiflari || []).map(a => `${a.belge} ${a.madde}`).join(' | '),\n    data_warnings: uyari.join(' | '), warnings_count: uyari.length,\n    model: o.model || '', model_version: s.model_surumu || '', source: 'servis'\n  }};\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -256,
+        400
+      ],
+      "id": "9a0e6e86-4742-4cb9-b2f9-cd8415a6270b",
+      "name": "Alanlari Hazirla (Servis)"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tr-grid-forecast",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -704,
+        704
+      ],
+      "id": "022a4a79-5c54-4325-96d8-810ef638b262",
+      "name": "Webhook (Test)",
+      "webhookId": "0f234e45-045c-4d58-af4d-eb61ff414833",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Webhook (7_canli_tr, GONDER = True ile n8n_yuku) -> ortak alanlar\nreturn $input.all().map(item => {\n  const b = item.json.body || {};\n  const uyari = b.data_warnings || [];\n  return { json: {\n    gun: b.gun, status: b.status, decision: b.decision, priority: b.priority,\n    tightest_hour: b.tightest_hour, min_margin: b.min_margin, min_margin_conservative: b.min_margin_conservative,\n    summary: b.summary || '', reasons: (b.reasons || []).join(' | '),\n    citations: (b.citations || []).map(a => `${a.belge} ${a.madde}`).join(' | '),\n    data_warnings: uyari.join(' | '), warnings_count: uyari.length,\n    model: b.model || '', model_version: '', source: 'webhook'\n  }};\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -256,
+        704
+      ],
+      "id": "68e62de9-5f05-4608-82a1-3ab343c5933a",
+      "name": "Alanlari Hazirla (Webhook)"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_SHEET_URL_BURAYA",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "TR_Kararlar",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Zaman": "={{ $now.setZone('Europe/Istanbul').toFormat('yyyy-MM-dd HH:mm') }}",
+            "Gün": "={{ $json.gun }}",
+            "Durum": "={{ $json.status }}",
+            "Karar": "={{ $json.decision }}",
+            "Oncelik": "={{ $json.priority }}",
+            "EnDarSaat": "={{ $json.tightest_hour }}",
+            "Marj": "={{ $json.min_margin }}",
+            "TemkinliMarj": "={{ $json.min_margin_conservative }}",
+            "Ozet": "={{ $json.summary }}",
+            "Gerekceler": "={{ $json.reasons }}",
+            "Mevzuat": "={{ $json.citations }}",
+            "VeriUyarilari": "={{ $json.data_warnings }}",
+            "Model": "={{ $json.model }} {{ $json.model_version }}",
+            "Kaynak": "={{ $json.source }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Zaman",
+              "displayName": "Zaman",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Gün",
+              "displayName": "Gün",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Durum",
+              "displayName": "Durum",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Karar",
+              "displayName": "Karar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Oncelik",
+              "displayName": "Oncelik",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "EnDarSaat",
+              "displayName": "EnDarSaat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Marj",
+              "displayName": "Marj",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "TemkinliMarj",
+              "displayName": "TemkinliMarj",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Ozet",
+              "displayName": "Ozet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Gerekceler",
+              "displayName": "Gerekceler",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Mevzuat",
+              "displayName": "Mevzuat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "VeriUyarilari",
+              "displayName": "VeriUyarilari",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Model",
+              "displayName": "Model",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Kaynak",
+              "displayName": "Kaynak",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        0,
+        208
+      ],
+      "id": "fd2b2ae9-06c4-4d23-96a0-49a374dc3e1d",
+      "name": "Sheets - TR Kararlar",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "VB4tgAih3DJUBIXZ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0ca22999-0dd2-4612-84bf-39b098a9b721",
+              "leftValue": "={{ $json.decision }}",
+              "rightValue": "activate_reserve",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        400
+      ],
+      "id": "6fb990b3-4c77-4d71-ac9c-57f642ba07ab",
+      "name": "Rezerv mi?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1237b115-0b47-4162-9d50-c1d0788c0f05",
+              "leftValue": "={{ $json.decision }}",
+              "rightValue": "demand_response_alert",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        560
+      ],
+      "id": "973d299d-8905-4f2e-b500-59b7dbd0cb12",
+      "name": "Talep Yaniti mi?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "755fc392-87ff-4a36-800d-dc01970756e4",
+              "leftValue": "={{ $json.warnings_count }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        752
+      ],
+      "id": "ec6ac503-1820-494b-9914-62ad86720e7d",
+      "name": "Veri Uyarisi Var mi?"
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "=TR Sebeke: REZERV devreye alinmasi oneriliyor - {{ $json.gun }}",
+        "message": "=Gun: {{ $json.gun }}\nKarar: {{ $json.decision }} (durum {{ $json.status }}, oncelik {{ $json.priority }})\nEn dar saat: {{ $json.tightest_hour }}:00 | marj %{{ ($json.min_margin * 100).toFixed(1) }} | temkinli marj %{{ ($json.min_margin_conservative * 100).toFixed(1) }}\n\nOzet: {{ $json.summary }}\n\nGerekceler: {{ $json.reasons }}\n\nMevzuat: {{ $json.citations }}\n\nVeri uyarilari: {{ $json.data_warnings || 'yok' }}\nModel: {{ $json.model }} {{ $json.model_version }}\n\nNot: Esikler tarihsel nadirlik esikleridir; fiziksel guvenilirlik siniri degildir. Bu bir taslaktir; gondermeden once kontrol edin.",
+        "options": {
+          "sendTo": "ALICI_EPOSTA_BURAYA"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        352
+      ],
+      "id": "2bd0cbea-71a2-4cfc-8452-22cd01d9d871",
+      "name": "Gmail - Rezerv Uyarisi",
+      "webhookId": "cea739f4-40bd-40c3-8cf6-ce77604d41f4",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "BvPkwGuMOIA0ehHp",
+          "name": "Gmail account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "=TR Sebeke: Talep yaniti uyarisi ({{ $json.priority }}) - {{ $json.gun }}",
+        "message": "=Gun: {{ $json.gun }}\nKarar: {{ $json.decision }} (durum {{ $json.status }}, oncelik {{ $json.priority }})\nEn dar saat: {{ $json.tightest_hour }}:00 | marj %{{ ($json.min_margin * 100).toFixed(1) }} | temkinli marj %{{ ($json.min_margin_conservative * 100).toFixed(1) }}\n\nOzet: {{ $json.summary }}\n\nGerekceler: {{ $json.reasons }}\n\nMevzuat: {{ $json.citations }}\n\nVeri uyarilari: {{ $json.data_warnings || 'yok' }}\nModel: {{ $json.model }} {{ $json.model_version }}\n\nNot: Esikler tarihsel nadirlik esikleridir; fiziksel guvenilirlik siniri degildir. Bu bir taslaktir; gondermeden once kontrol edin.",
+        "options": {
+          "sendTo": "ALICI_EPOSTA_BURAYA"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        480,
+        512
+      ],
+      "id": "51ed3340-1fb5-4425-b4f5-ea01e30d80a7",
+      "name": "Gmail - Talep Yaniti Uyarisi",
+      "webhookId": "908fe9de-d66b-4cfa-9d7d-cae7cfd0609b",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "BvPkwGuMOIA0ehHp",
+          "name": "Gmail account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "=TR Sebeke: Veri uyarili karar, inceleme gerekli - {{ $json.gun }}",
+        "message": "=Gun: {{ $json.gun }}\nKarar: {{ $json.decision }} (durum {{ $json.status }}, oncelik {{ $json.priority }})\nEn dar saat: {{ $json.tightest_hour }}:00 | marj %{{ ($json.min_margin * 100).toFixed(1) }} | temkinli marj %{{ ($json.min_margin_conservative * 100).toFixed(1) }}\n\nOzet: {{ $json.summary }}\n\nGerekceler: {{ $json.reasons }}\n\nMevzuat: {{ $json.citations }}\n\nVeri uyarilari: {{ $json.data_warnings || 'yok' }}\nModel: {{ $json.model }} {{ $json.model_version }}\n\nNot: Esikler tarihsel nadirlik esikleridir; fiziksel guvenilirlik siniri degildir. Bu bir taslaktir; gondermeden once kontrol edin.",
+        "options": {
+          "sendTo": "ALICI_EPOSTA_BURAYA"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        752
+      ],
+      "id": "07459156-0145-4b44-ae7c-c60613475ab1",
+      "name": "Gmail - Veri Uyarisi Incelemesi",
+      "webhookId": "f15af041-6679-425f-a2fe-592aca32e91a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "BvPkwGuMOIA0ehHp",
+          "name": "Gmail account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "=TR Sebeke: Gunluk karar servisi calismadi - {{ $now.setZone('Europe/Istanbul').toFormat('yyyy-MM-dd') }}",
+        "message": "=Karar servisi hata dondurdu:\n{{ $json.error ? $json.error.message : JSON.stringify($json) }}\n\nServisin calistigini ve API anahtarini kontrol edin.",
+        "options": {
+          "sendTo": "ALICI_EPOSTA_BURAYA"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -256,
+        160
+      ],
+      "id": "9565aaf2-a0a5-456e-b46c-069be236eb89",
+      "name": "Gmail - Servis Hatasi",
+      "webhookId": "866a79cd-3768-4ca3-a2a4-c2699cc9961e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "BvPkwGuMOIA0ehHp",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_SHEET_URL_BURAYA",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 20700955,
+          "mode": "list",
+          "cachedResultName": "TR_Hatalar",
+          "cachedResultUrl": "GOOGLE_SHEET_URL_BURAYA"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Zaman": "={{ $now.setZone('Europe/Istanbul').toFormat('yyyy-MM-dd HH:mm') }}",
+            "Hata": "={{ $json.error ? $json.error.message : JSON.stringify($json).slice(0, 500) }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Zaman",
+              "displayName": "Zaman",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hata",
+              "displayName": "Hata",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2c4905a6-7579-4d6a-a738-0cde3f79b35d",
+      "name": "Sheets - TR Hatalar",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "VB4tgAih3DJUBIXZ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8001/karar/calistir",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "agent",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -480,
+        400
+      ],
+      "id": "c3fcdb94-832e-419e-baa6-a3d4df71abd1",
+      "name": "Karar Servisi",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "BSBOOWMTEJXiCYwU",
+          "name": "Header Auth account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Her Gun 16:15": {
+      "main": [
+        [
+          {
+            "node": "Karar Servisi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook (Test)": {
+      "main": [
+        [
+          {
+            "node": "Alanlari Hazirla (Webhook)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alanlari Hazirla (Servis)": {
+      "main": [
+        [
+          {
+            "node": "Sheets - TR Kararlar",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Rezerv mi?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Veri Uyarisi Var mi?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alanlari Hazirla (Webhook)": {
+      "main": [
+        [
+          {
+            "node": "Sheets - TR Kararlar",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Rezerv mi?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Veri Uyarisi Var mi?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rezerv mi?": {
+      "main": [
+        [
+          {
+            "node": "Gmail - Rezerv Uyarisi",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Talep Yaniti mi?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Talep Yaniti mi?": {
+      "main": [
+        [
+          {
+            "node": "Gmail - Talep Yaniti Uyarisi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Veri Uyarisi Var mi?": {
+      "main": [
+        [
+          {
+            "node": "Gmail - Veri Uyarisi Incelemesi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail - Rezerv Uyarisi": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Sheets - TR Hatalar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail - Talep Yaniti Uyarisi": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Sheets - TR Hatalar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail - Veri Uyarisi Incelemesi": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Sheets - TR Hatalar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Karar Servisi": {
+      "main": [
+        [
+          {
+            "node": "Alanlari Hazirla (Servis)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Gmail - Servis Hatasi",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Sheets - TR Hatalar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "6cac2079-7b6e-44cb-9518-345097f5c5a6",
+  "meta": {
+    "instanceId": "e902635be0ee76ca14aeb4f5509de99dfca82d22569ba1062c8d8b7db5ade40b"
+  },
+  "nodeGroups": [],
+  "id": "A45dCvlVi2QaAgs2",
+  "tags": []
+}

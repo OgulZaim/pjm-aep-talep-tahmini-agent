@@ -1,0 +1,28 @@
+{
+  "model": "Referans (3_model)",
+  "hedef": "seviye",
+  "ozellikler": [
+    "saat",
+    "gun",
+    "ay",
+    "hafta_sonu",
+    "tatil_saat",
+    "idari_izin",
+    "bayram_gun_no",
+    "bayram_once_gun",
+    "bayram_sonra_gun",
+    "tavg_dun",
+    "hdd_dun",
+    "cdd_dun",
+    "lag_48",
+    "lag_72",
+    "lag_168",
+    "rol_24_48",
+    "rol_168_48"
+  ],
+  "kullanim": "Resmi plan yoksa veya supheliyse",
+  "ankara_bazlari_c": [
+    14.0,
+    17.0
+  ]
+}

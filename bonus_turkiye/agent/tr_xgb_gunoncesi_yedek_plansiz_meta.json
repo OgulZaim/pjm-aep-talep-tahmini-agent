@@ -1,0 +1,36 @@
+{
+  "model": "Referans (3_model)",
+  "hedef": "seviye",
+  "ozellikler": [
+    "saat",
+    "gun",
+    "ay",
+    "hafta_sonu",
+    "tatil_saat",
+    "idari_izin",
+    "bayram_gun_no",
+    "bayram_once_gun",
+    "bayram_sonra_gun",
+    "tavg_dun",
+    "hdd_dun",
+    "cdd_dun",
+    "lag_48",
+    "lag_72",
+    "lag_168",
+    "rol_24_48",
+    "rol_168_48"
+  ],
+  "kullanim": "Resmi plan yoksa veya supheliyse",
+  "ankara_bazlari_c": [
+    13.5,
+    17.0
+  ],
+  "surum": "3d_uretim_20261002_1617",
+  "egitim_bitis": "2026-09-22",
+  "agac_sayisi": 422,
+  "egitim_yontemi": "3c yapisi; butun veri; agac sayisi 3c erken durdurmasindan sabit; erken durdurma yok",
+  "onceki_surum_arsivi": "C:\\Deep_Learning_to_AI_Agents\\Bitirme_Proje_Bonus\\agent\\arsiv\\20261002_1617",
+  "plan_duz_gunleri": [
+    "2025-04-07"
+  ]
+}

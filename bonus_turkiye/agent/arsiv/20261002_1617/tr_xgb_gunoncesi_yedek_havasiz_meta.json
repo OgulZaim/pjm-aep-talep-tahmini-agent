@@ -1,0 +1,32 @@
+{
+  "model": "Hibrit (oran)",
+  "hedef": "oran",
+  "ozellikler": [
+    "saat",
+    "gun",
+    "ay",
+    "hafta_sonu",
+    "tatil_saat",
+    "idari_izin",
+    "bayram_gun_no",
+    "bayram_once_gun",
+    "bayram_sonra_gun",
+    "tavg_dun",
+    "hdd_dun",
+    "cdd_dun",
+    "lag_48",
+    "lag_72",
+    "lag_168",
+    "rol_24_48",
+    "rol_168_48",
+    "lep",
+    "lep_hata_48",
+    "lep_hata_168",
+    "lep_hata_ort_7g"
+  ],
+  "kullanim": "Hava tahmini yoksa",
+  "ankara_bazlari_c": [
+    14.0,
+    17.0
+  ]
+}

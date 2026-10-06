@@ -1,0 +1,9 @@
+sorgu,anahtar,bulundu,sira,herhangi_bir_parcada_var,ilk_sonuc,benzerlik
+Acil durum tanımı: sistem kararlılığı ve emniyeti açısından ,acil durum,True,1,True,Elektrik Piyasası Dengeleme  | MADDE 75,0.7003
+Dengeleme güç piyasasında yedek kapasite kaç dakika içinde d,15 dakika,True,1,True,Elektrik Piyasası Dengeleme  | MADDE 70,0.7475
+Primer frekans kontrol rezerv kapasitesi hangi frekans sapma,200 mhz,True,1,True,Elektrik Şebeke Yönetmeliği | MADDE 105,0.7794
+"Sistem frekansı 49,8 Hz'nin altına düştüğünde üretim tesisle","49,8",True,2,True,Elektrik Şebeke Yönetmeliği | MADDE 20,0.766
+Gerçekleşen tüketim verisi ne kadar gecikmeyle yayımlanır,s+2,True,1,True,EPDK 10711 sayılı Kurul Kara | BOLUM 7,0.6784
+Gün öncesi yük tahmin planı ne zaman yayımlanır,g-1,True,2,True,Elektrik Piyasası Dengeleme  | MADDE 67/A,0.7762
+Düşük frekans rölesi ile tüketim yüklerinin kesilmesi,düşük frekans rölesi,True,2,True,Elektrik Şebeke Yönetmeliği | MADDE 67,0.7866
+Yük atma talimatı nedir,yük atma,True,1,True,Elektrik Piyasası Dengeleme  | MADDE 4,0.703

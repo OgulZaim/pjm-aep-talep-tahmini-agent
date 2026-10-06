@@ -1,0 +1,7 @@
+senaryo,gun,karar,oncelik,en_dar_saat,marj_%,marj_temkinli_%,gercek_en_dar_saat,gercek_marj_%,gun_mape_%,plan_mape_%,model,atif,dogrulama_notu,gecti,sure_sn
+1 Yaz aksam darligi,2025-07-28,demand_response_alert,yuksek,20,8.7,4.8,20,14.6,4.15,1.55,secilen,3,0,True,9.5
+2 Kasim aksam darligi,2025-11-07,demand_response_alert,yuksek,18,17.7,14.0,18,16.7,1.42,1.59,secilen,3,0,True,10.2
+3 Idari izin gunu,2026-05-25,normal_operation,yok,20,32.3,29.5,20,37.2,8.3,13.91,secilen,2,0,True,10.6
+4 Duz resmi plan,2025-04-07,normal_operation,yok,20,36.6,33.9,20,36.4,2.34,50.15,plansiz,2,0,True,4.2
+5 EAK gunes anomalisi,2026-05-01,normal_operation,yok,20,39.0,36.5,20,37.0,1.18,2.27,secilen,1,0,True,5.2
+6 Yapay kapasite acigi,2025-07-28,activate_reserve,yuksek,20,3.0,-1.0,20,9.4,4.15,1.55,secilen,3,0,True,4.2

@@ -1,0 +1,28 @@
+{
+  "end_to_end_examples": {
+    "example_STRES_TESTI_dusuk_kapasite": {
+      "actual_datetime": "2018-07-10 16:00:00 (gercek tarih, kapasite hipotetik)",
+      "demand_forecast": {
+        "region": "AEP",
+        "forecast_mw": 21470,
+        "confidence_interval": [
+          21041,
+          21899
+        ]
+      },
+      "grid_status": {
+        "available_capacity_mw": 23856,
+        "time_period": "day",
+        "capacity_source": "STRESS_TEST_hypothetical_reduced_capacity"
+      },
+      "agent_decision": {
+        "reasoning_steps": "Forecasted demand of 21,470 MW against available capacity of 23,856 MW leaves an operating reserve margin of approximately 11.1%, which falls below the typical 15-20% healthy margin. Although demand does not exceed capacity during this day period, the constrained margin warrants proactive operational alerts to prevent reserve deficiencies.",
+        "status": "attention",
+        "decision": "demand_response_alert",
+        "justification": "The reserve margin (~11.1%) is below standard reliability margins, aligning with PJM Operating Reserve and Capacity Shortage alert protocols to maintain adequate contingency reserves.",
+        "uncertainty": "low",
+        "confidence_note": "Capacity is noted as a hypothetical stress-test reduced capacity; forecast CI is narrow and well-defined."
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "en_iyi": "XGBoost + Open-Meteo",
+  "dogrulama": {
+    "XGBoost gun oncesi (3_model referansi)": {
+      "RMSPE": 0.033272577439935884,
+      "MAPE_%": 2.467638809312102,
+      "MAE_MWh": 1008.0818677493579
+    },
+    "XGBoost + Open-Meteo": {
+      "RMSPE": 0.0320754620467846,
+      "MAPE_%": 2.4360473434958396,
+      "MAE_MWh": 976.5104584849458
+    },
+    "Hibrit (seviye)": {
+      "RMSPE": 0.033712254336216343,
+      "MAPE_%": 2.434078293552022,
+      "MAE_MWh": 982.8404880850456
+    },
+    "Hibrit (oran)": {
+      "RMSPE": 0.04180185309944648,
+      "MAPE_%": 2.618507938981887,
+      "MAE_MWh": 1046.5654028041804
+    },
+    "Hibrit (oran) + Open-Meteo": {
+      "RMSPE": 0.039511554665368896,
+      "MAPE_%": 2.5149719042218894,
+      "MAE_MWh": 1000.5342585930673
+    },
+    "Hibrit (oran) + Open-Meteo, ex-post": {
+      "RMSPE": 0.039706133027689376,
+      "MAPE_%": 2.506848757441208,
+      "MAE_MWh": 999.7460972304536
+    },
+    "Resmi Yuk Tahmin Plani": {
+      "RMSPE": 0.05034021016194789,
+      "MAPE_%": 3.228470656045986,
+      "MAE_MWh": 1289.418093607306
+    }
+  },
+  "test": {
+    "XGBoost gun oncesi (3_model referansi)": {
+      "RMSPE": 0.0375007408494776,
+      "MAPE_%": 2.836775701556946,
+      "MAE_MWh": 1184.753266426848
+    },
+    "XGBoost + Open-Meteo": {
+      "RMSPE": 0.0367396502246342,
+      "MAPE_%": 2.9509463517790944,
+      "MAE_MWh": 1225.7011358837983
+    },
+    "Hibrit (seviye)": {
+      "RMSPE": 0.032666348526708744,
+      "MAPE_%": 2.4531237180201844,
+      "MAE_MWh": 1021.7201295094751
+    },
+    "Hibrit (oran)": {
+      "RMSPE": 0.03213586297191368,
+      "MAPE_%": 2.396542022988641,
+      "MAE_MWh": 981.5271096802898
+    },
+    "Hibrit (oran) + Open-Meteo": {
+      "RMSPE": 0.031385883713586214,
+      "MAPE_%": 2.392641722312617,
+      "MAE_MWh": 974.6892693886065
+    },
+    "Hibrit (oran) + Open-Meteo, ex-post": {
+      "RMSPE": 0.03093132867427985,
+      "MAPE_%": 2.3219517088208255,
+      "MAE_MWh": 945.7166631928679
+    },
+    "Resmi Yuk Tahmin Plani": {
+      "RMSPE": 0.035914320903209056,
+      "MAPE_%": 2.599021212740358,
+      "MAE_MWh": 1044.3640442561205
+    }
+  },
+  "dogrulama_saat": 8760,
+  "test_saat": 8496
+}

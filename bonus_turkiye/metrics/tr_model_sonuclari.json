@@ -1,0 +1,46 @@
+{
+  "test_donemi": [
+    "2025-10-01 00:00:00+03:00",
+    "2026-09-22 23:00:00+03:00"
+  ],
+  "test_saat": 8544,
+  "hdd_tabani_egitim_c": 14.0,
+  "cdd_tabani_egitim_c": 17.0,
+  "sonuclar": {
+    "Naif: bir onceki saat": {
+      "RMSPE": 0.04208,
+      "MAPE_%": 3.21722,
+      "MAE_MWh": 1292.84179
+    },
+    "Naif: gecen hafta ayni saat": {
+      "RMSPE": 0.08549,
+      "MAPE_%": 4.96541,
+      "MAE_MWh": 1937.76957
+    },
+    "Resmi Yuk Tahmin Plani": {
+      "RMSPE": 0.03589,
+      "MAPE_%": 2.59825,
+      "MAE_MWh": 1043.52373
+    },
+    "XGBoost 1 saat ileri": {
+      "RMSPE": 0.01327,
+      "MAPE_%": 0.96017,
+      "MAE_MWh": 400.78847
+    },
+    "XGBoost gun oncesi (gerceklesen sicaklik)": {
+      "RMSPE": 0.0376,
+      "MAPE_%": 2.86656,
+      "MAE_MWh": 1199.25497
+    },
+    "XGBoost gun oncesi (dunun sicakligi)": {
+      "RMSPE": 0.03756,
+      "MAPE_%": 2.84962,
+      "MAE_MWh": 1189.37024
+    },
+    "LSTM 1 saat ileri": {
+      "RMSPE": 0.01066,
+      "MAPE_%": 0.78803,
+      "MAE_MWh": 317.19933
+    }
+  }
+}

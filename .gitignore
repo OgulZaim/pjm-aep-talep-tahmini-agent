@@ -1,0 +1,20 @@
+# Gizli bilgiler
+.env
+**/.env
+.eptr2-tgt
+**/.streamlit/secrets.toml
+
+# Yayinlanmayanlar
+docs/
+**/docs/
+rag_docs/
+**/rag_docs/
+bonus_turkiye/data/
+
+# Onbellek ve gecici dosyalar
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+*.zip
+*.tmp
+*.log

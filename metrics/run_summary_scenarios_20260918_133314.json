@@ -1,0 +1,76 @@
+{
+  "end_to_end_examples": {
+    "example_peak": {
+      "actual_datetime": "2018-08-02 19:00:00",
+      "demand_forecast": {
+        "region": "AEP",
+        "forecast_mw": 17561,
+        "confidence_interval": [
+          17081,
+          18041
+        ]
+      },
+      "grid_status": {
+        "available_capacity_mw": 25570,
+        "time_period": "peak",
+        "capacity_source": "simulated_from_PJM_2027-2028_IRM_20pct"
+      },
+      "agent_decision": {
+        "reasoning_steps": "Forecasted peak demand of 17,561 MW (upper confidence limit of 18,041 MW) is substantially below the available capacity of 25,570 MW. The resulting reserve margin comfortably exceeds standard operating reserve requirements, requiring no emergency interventions.",
+        "status": "normal",
+        "decision": "normal_operation",
+        "justification": "Available capacity exceeds the forecasted peak demand by over 8,000 MW, well within reliability margins and requiring no PJM Maximum Generation Emergency or Load Management Alerts.",
+        "uncertainty": "low",
+        "confidence_note": "Forecast and capacity data are complete with narrow confidence intervals; no data gaps identified."
+      }
+    },
+    "example_sabah_gecisi": {
+      "actual_datetime": "2018-08-02 07:00:00",
+      "demand_forecast": {
+        "region": "AEP",
+        "forecast_mw": 14295,
+        "confidence_interval": [
+          13904,
+          14685
+        ]
+      },
+      "grid_status": {
+        "available_capacity_mw": 25570,
+        "time_period": "day",
+        "capacity_source": "simulated_from_PJM_2027-2028_IRM_20pct"
+      },
+      "agent_decision": {
+        "reasoning_steps": "Forecasted demand of 14,295 MW (upper confidence bound of 14,685 MW) is well below the available capacity of 25,570 MW during the day period. The substantial reserve margin exceeds standard PJM reserve requirements, indicating no threat to system reliability.",
+        "status": "normal",
+        "decision": "normal_operation",
+        "justification": "Operating reserve capacity is comfortably above required levels per standard PJM reserve requirements, with no capacity shortages or emergency conditions detected.",
+        "uncertainty": "low",
+        "confidence_note": "Data is complete and consistent across provided forecast and grid status inputs."
+      }
+    },
+    "example_farkli_gun_peak": {
+      "actual_datetime": "2018-08-01 19:00:00",
+      "demand_forecast": {
+        "region": "AEP",
+        "forecast_mw": 16489,
+        "confidence_interval": [
+          16039,
+          16940
+        ]
+      },
+      "grid_status": {
+        "available_capacity_mw": 25570,
+        "time_period": "peak",
+        "capacity_source": "simulated_from_PJM_2027-2028_IRM_20pct"
+      },
+      "agent_decision": {
+        "reasoning_steps": "Forecasted demand of 16,489 MW (upper bound 16,940 MW) is well below the available capacity of 25,570 MW during the peak period. The grid maintains a substantial reserve margin well above standard IRM requirements, indicating no risk of capacity shortage.",
+        "status": "normal",
+        "decision": "normal_operation",
+        "justification": "Available capacity of 25,570 MW comfortably covers the peak forecast of 16,489 MW, ensuring compliance with PJM Reserve Requirements without needing a Maximum Generation Emergency or Load Management Alert.",
+        "uncertainty": "low",
+        "confidence_note": "Forecast and capacity metrics are complete with explicit confidence intervals; no assumptions required."
+      }
+    }
+  }
+}

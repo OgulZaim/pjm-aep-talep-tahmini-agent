@@ -1,0 +1,11 @@
+{
+  "yontem": "Mart 2025 sonrasi, sicramalari duzeltilmis ve Mayis 2026 anomalisi disarida birakilmis kapasite bazli marj dagilimi; resmi bir MW esigi olmadigi icin veri tabanli",
+  "marj_tanimi": "(EAK - tuketim) / EAK",
+  "cok_nadir_alti": 0.207,
+  "nadir_alti": 0.246,
+  "donem": [
+    "2025-03-01 00:00:00+03:00",
+    "2026-09-27 23:00:00+03:00"
+  ],
+  "saat": 13320
+}

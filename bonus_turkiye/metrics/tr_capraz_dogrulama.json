@@ -1,0 +1,163 @@
+{
+  "secilen": "Hibrit (oran) + Open-Meteo",
+  "katman_mape": {
+    "1": {
+      "Referans (3_model)": 3.1405,
+      "XGBoost + Open-Meteo": 3.3063,
+      "Hibrit (seviye)": 2.7946,
+      "Hibrit (oran)": 2.7043,
+      "Hibrit (oran) + Open-Meteo": 2.6646,
+      "Resmi Yuk Tahmin Plani": 2.7373
+    },
+    "2": {
+      "Referans (3_model)": 2.3714,
+      "XGBoost + Open-Meteo": 2.1908,
+      "Hibrit (seviye)": 2.165,
+      "Hibrit (oran)": 2.6275,
+      "Hibrit (oran) + Open-Meteo": 2.1312,
+      "Resmi Yuk Tahmin Plani": 2.7711
+    },
+    "3": {
+      "Referans (3_model)": 2.4817,
+      "XGBoost + Open-Meteo": 2.3605,
+      "Hibrit (seviye)": 2.5465,
+      "Hibrit (oran)": 2.6116,
+      "Hibrit (oran) + Open-Meteo": 2.5318,
+      "Resmi Yuk Tahmin Plani": 3.4576
+    },
+    "4": {
+      "Referans (3_model)": 2.7434,
+      "XGBoost + Open-Meteo": 2.882,
+      "Hibrit (seviye)": 2.6244,
+      "Hibrit (oran)": 2.5134,
+      "Hibrit (oran) + Open-Meteo": 2.5614,
+      "Resmi Yuk Tahmin Plani": 3.1027
+    }
+  },
+  "katman_rmspe": {
+    "1": {
+      "Referans (3_model)": 0.04111,
+      "XGBoost + Open-Meteo": 0.04291,
+      "Hibrit (seviye)": 0.03853,
+      "Hibrit (oran)": 0.03965,
+      "Hibrit (oran) + Open-Meteo": 0.04017,
+      "Resmi Yuk Tahmin Plani": 0.04133
+    },
+    "2": {
+      "Referans (3_model)": 0.03307,
+      "XGBoost + Open-Meteo": 0.03065,
+      "Hibrit (seviye)": 0.0301,
+      "Hibrit (oran)": 0.03825,
+      "Hibrit (oran) + Open-Meteo": 0.0314,
+      "Resmi Yuk Tahmin Plani": 0.04019
+    },
+    "3": {
+      "Referans (3_model)": 0.0325,
+      "XGBoost + Open-Meteo": 0.03043,
+      "Hibrit (seviye)": 0.03403,
+      "Hibrit (oran)": 0.03631,
+      "Hibrit (oran) + Open-Meteo": 0.03573,
+      "Resmi Yuk Tahmin Plani": 0.04881
+    },
+    "4": {
+      "Referans (3_model)": 0.03642,
+      "XGBoost + Open-Meteo": 0.03766,
+      "Hibrit (seviye)": 0.03499,
+      "Hibrit (oran)": 0.03433,
+      "Hibrit (oran) + Open-Meteo": 0.03408,
+      "Resmi Yuk Tahmin Plani": 0.04091
+    }
+  },
+  "ozet": {
+    "ort_MAPE_%": {
+      "Referans (3_model)": 2.6843,
+      "XGBoost + Open-Meteo": 2.6849,
+      "Hibrit (seviye)": 2.5326,
+      "Hibrit (oran)": 2.6142,
+      "Hibrit (oran) + Open-Meteo": 2.4722,
+      "Resmi Yuk Tahmin Plani": 3.0172
+    },
+    "std_MAPE": {
+      "Referans (3_model)": 0.3418,
+      "XGBoost + Open-Meteo": 0.5081,
+      "Hibrit (seviye)": 0.2661,
+      "Hibrit (oran)": 0.0784,
+      "Hibrit (oran) + Open-Meteo": 0.2344,
+      "Resmi Yuk Tahmin Plani": 0.3367
+    },
+    "ort_RMSPE": {
+      "Referans (3_model)": 0.0358,
+      "XGBoost + Open-Meteo": 0.0354,
+      "Hibrit (seviye)": 0.0344,
+      "Hibrit (oran)": 0.0371,
+      "Hibrit (oran) + Open-Meteo": 0.0353,
+      "Resmi Yuk Tahmin Plani": 0.0428
+    },
+    "plani_gectigi_katman": {
+      "Referans (3_model)": 3,
+      "XGBoost + Open-Meteo": 3,
+      "Hibrit (seviye)": 3,
+      "Hibrit (oran)": 4,
+      "Hibrit (oran) + Open-Meteo": 4,
+      "Resmi Yuk Tahmin Plani": 0
+    },
+    "ozellik_sayisi": {
+      "Referans (3_model)": 17,
+      "XGBoost + Open-Meteo": 18,
+      "Hibrit (seviye)": 21,
+      "Hibrit (oran)": 21,
+      "Hibrit (oran) + Open-Meteo": 22,
+      "Resmi Yuk Tahmin Plani": 0
+    }
+  },
+  "test": {
+    "Referans (3_model)": {
+      "RMSPE": 0.03525220615909767,
+      "MAPE_%": 2.6297469758607317,
+      "MAE_MWh": 1094.987777069724
+    },
+    "XGBoost + Open-Meteo": {
+      "RMSPE": 0.033684440002234695,
+      "MAPE_%": 2.6600461928188506,
+      "MAE_MWh": 1107.156082301598
+    },
+    "Hibrit (seviye)": {
+      "RMSPE": 0.03090240574576282,
+      "MAPE_%": 2.298552649095429,
+      "MAE_MWh": 954.4168583009653
+    },
+    "Hibrit (oran)": {
+      "RMSPE": 0.03080785549458197,
+      "MAPE_%": 2.303190185926509,
+      "MAE_MWh": 940.9010678071244
+    },
+    "Hibrit (oran) + Open-Meteo": {
+      "RMSPE": 0.030236523219707635,
+      "MAPE_%": 2.28891870325947,
+      "MAE_MWh": 933.6631578434115
+    },
+    "Resmi Yuk Tahmin Plani": {
+      "RMSPE": 0.035914320903209056,
+      "MAPE_%": 2.599021212740358,
+      "MAE_MWh": 1044.3640442561205
+    }
+  },
+  "test_bilgisi": {
+    "ankara_bazlari": [
+      14.0,
+      17.0,
+      0.845
+    ],
+    "om_bazlari": [
+      15.5,
+      20.0,
+      0.881
+    ],
+    "sapma_saat_sayisi": 8760,
+    "ay_saat_hucresi": 288,
+    "ortalama_sapma_c": 0.694,
+    "egitim_saat": 78528,
+    "erken_durdurma_saat": 4320,
+    "degerlendirme_saat": 8496
+  }
+}

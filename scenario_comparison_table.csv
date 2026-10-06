@@ -1,0 +1,9 @@
+senaryo,tarih_saat,tahmin_mw,kapasite_mw,marj_yuzde,zaman_dilimi,durum,karar,belirsizlik
+example_STRES_TESTI_dusuk_kapasite,"2018-07-10 16:00:00 (gercek tarih, kapasite hipotetik)",21470,23856,10.0,day,attention,demand_response_alert,low
+example_yillik_zirve,2018-07-10 16:00:00,21576,25570,15.6,day,normal,normal_operation,low
+example_yillik_zirve,2018-07-10 16:00:00,21576,25570,15.6,day,normal,normal_operation,low
+example_yillik_zirve,2018-07-10 16:00:00,21576,25570,15.6,day,normal,normal_operation,low
+example_peak,2018-08-02 19:00:00,17561,25570,31.3,peak,normal,normal_operation,low
+example_farkli_gun_peak,2018-08-01 19:00:00,16489,25570,35.5,peak,normal,normal_operation,low
+example_sabah_gecisi,2018-08-02 07:00:00,14295,25570,44.1,day,normal,normal_operation,low
+gece_(ana_ornek),-,13791,25570,46.1,night,normal,normal_operation,low

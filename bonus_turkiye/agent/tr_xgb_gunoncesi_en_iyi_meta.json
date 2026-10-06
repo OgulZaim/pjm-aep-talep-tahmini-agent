@@ -1,0 +1,43 @@
+{
+  "model": "XGBoost + Open-Meteo",
+  "hedef": "seviye",
+  "ozellikler": [
+    "saat",
+    "gun",
+    "ay",
+    "hafta_sonu",
+    "tatil_saat",
+    "idari_izin",
+    "bayram_gun_no",
+    "bayram_once_gun",
+    "bayram_sonra_gun",
+    "lag_48",
+    "lag_72",
+    "lag_168",
+    "rol_24_48",
+    "rol_168_48",
+    "om_t",
+    "om_tgun",
+    "om_hdd",
+    "om_cdd"
+  ],
+  "hava_kaynagi_egitim": "era5",
+  "hava_kaynagi_calisma": "tah",
+  "om_bazlari_c": {
+    "hdd": 15.5,
+    "cdd": 20.0
+  },
+  "ankara_bazlari_c": {
+    "hdd": 14.0,
+    "cdd": 17.0
+  },
+  "sehir_agirliklari": {
+    "istanbul": 0.45777134514309553,
+    "ankara": 0.17096303923096662,
+    "izmir": 0.13099793475808727,
+    "bursa": 0.09442008008257002,
+    "antalya": 0.07936137675175156,
+    "adana": 0.066486224033529
+  },
+  "secim_olcutu": "dogrulama RMSPE"
+}

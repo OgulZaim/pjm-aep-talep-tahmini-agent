@@ -1,0 +1,87 @@
+{
+  "run_timestamp": "2026-09-28T14:55:18.925852",
+  "data": {
+    "rows": 121273,
+    "date_range": [
+      "2004-10-01 01:00:00",
+      "2018-08-03 00:00:00"
+    ]
+  },
+  "model_config": {
+    "window_size": 24,
+    "n_features": 9,
+    "features": [
+      "AEP_MW",
+      "hour",
+      "day_of_week",
+      "month",
+      "is_weekend",
+      "is_holiday",
+      "avg_temp_f",
+      "HDD",
+      "CDD"
+    ]
+  },
+  "training": {
+    "epochs_run": 20,
+    "final_train_loss": 0.006444139871746302,
+    "final_val_loss": 0.007018185220658779,
+    "best_val_loss": 0.0059585790149867535
+  },
+  "metrics": {
+    "baseline_rmspe": 0.0837647270056018,
+    "lstm_rmspe": 0.027334567483591043,
+    "improvement_factor": 3.06442481871666,
+    "valid_rows_for_rmspe": 696
+  },
+  "hourly_error": {
+    "0": 0.017167007936798626,
+    "1": 0.020527187520749845,
+    "2": 0.023946130254667602,
+    "3": 0.021537225119792718,
+    "4": 0.02677821557027686,
+    "5": 0.031106328509166326,
+    "6": 0.03008343396086975,
+    "7": 0.04645674641823047,
+    "8": 0.029855340405558654,
+    "9": 0.02081209608111837,
+    "10": 0.021465294498156307,
+    "11": 0.012857499848795318,
+    "12": 0.012557658925884129,
+    "13": 0.012402989145194866,
+    "14": 0.012214838668625567,
+    "15": 0.009819327670226405,
+    "16": 0.011907163668328202,
+    "17": 0.01040645158075591,
+    "18": 0.012197716113630944,
+    "19": 0.01478100807546206,
+    "20": 0.014843905290319164,
+    "21": 0.01574428681464532,
+    "22": 0.02252390376382799,
+    "23": 0.013765768827814277
+  },
+  "end_to_end_example": {
+    "demand_forecast": {
+      "region": "AEP",
+      "forecast_mw": 13791,
+      "confidence_interval": [
+        13414,
+        14168
+      ]
+    },
+    "grid_status": {
+      "available_capacity_mw": 25570,
+      "time_period": "night",
+      "capacity_source": "simulated_from_PJM_2027-2028_IRM_20pct"
+    },
+    "agent_decision": {
+      "reasoning_steps": "Forecasted demand of 13,791 MW (upper confidence bound 14,168 MW) is well below the available capacity of 25,570 MW during the off-peak night period. With an extensive capacity cushion, operating and contingency reserves remain fully covered.",
+      "status": "normal",
+      "decision": "normal_operation",
+      "justification": "Forecasted demand is comfortably within total capacity, satisfying all primary and operating reserve requirements under PJM Manual 11 guidelines for normal operations.",
+      "uncertainty": "low",
+      "confidence_note": "Data provided is complete and consistent across demand forecast and grid status; no assumptions were required.",
+      "region": "AEP"
+    }
+  }
+}

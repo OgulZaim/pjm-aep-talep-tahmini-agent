@@ -1,0 +1,395 @@
+{
+  "1 Yaz aksam darligi": {
+    "ozet": {
+      "gun": "2025-07-28",
+      "durum": "attention",
+      "karar": "demand_response_alert",
+      "oncelik": "yuksek",
+      "en_dar_saat": 20,
+      "en_dusuk_marj": 0.0866,
+      "en_dar_saat_temkinli": 20,
+      "en_dusuk_marj_temkinli": 0.0484,
+      "esikler": {
+        "cok_nadir_alti": 0.207,
+        "nadir_alti": 0.246
+      },
+      "tahmin_zirve_mwh": 64109,
+      "eak_en_dar_saatte_mwh": 64465,
+      "model": "Hibrit (oran) + Open-Meteo",
+      "sapma_kaynagi": "30 gun",
+      "uyarilar": []
+    },
+    "cikti": {
+      "durum": "attention",
+      "karar": "demand_response_alert",
+      "oncelik": "yuksek",
+      "ozet": "2025-07-28 günü saat 20:00 için hesaplanan en düşük marj %8.66 (temkinli %4.84) ile tarihsel çok nadir eşiğinin (%20.70) oldukça altında gerçekleşmiştir. Sistemde talep tarafı katılımı uyarısı verilmesi ve dengeleme süreçlerinin izlenmesi gerekmektedir.",
+      "gerekceler": [
+        "Saat 20:00 itibarıyla tahmin edilen zirve talep 64.109 MWh, EAK ise 64.465 MWh olup marj %8.66 seviyesine gerilemektedir.",
+        "Temkinli marj %4.84 olarak öngörülmüş ve kritik seviyelerdedir.",
+        "Kullanılan eşikler (çok nadir altı: %20.70, nadir altı: %24.60) fiziksel bir güvenilirlik sınırı olmayıp, Mart 2025 sonrası marj dağılımının %1 ve %5'lik tarihsel nadirlik dilimleridir."
+      ],
+      "mevzuat_atiflari": [
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 4",
+          "neden": "Tüketim azaltma veya üretim artışına yönelik yük alma teklifleri ve piyasa tanımları kapsamındaki dayanak."
+        },
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 72",
+          "neden": "Arz güvenilirliği, arz kalitesi kriterleri ve arz-talep dengesinin sağlanması amacıyla yük alma/yük atma tekliflerinin değerlendirilmesi ve talimatlandırılması."
+        },
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 74",
+          "neden": "Sistemin tamamında arz ve talebin gerçek zamanlı dengelenmesi amacıyla verilecek talimatların düzenlenmesi."
+        }
+      ],
+      "veri_uyarilari": [],
+      "belirsizlik_notu": "Tahminler Hibrit (oran) + Open-Meteo modeli ve 30 günlük sapma kaynağı baz alınarak üretilmiş olup, gerçek zamanlı hava ve talep sapmaları marjı daha da daraltabilir."
+    },
+    "notlar": [],
+    "kiyas": {
+      "gun_mape_%": 4.15,
+      "resmi_plan_mape_%": 1.55,
+      "gercek_en_dar_saat": 20,
+      "gercek_en_dusuk_marj": 0.1462
+    },
+    "getirilen": [
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 74",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 4",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 73",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 72"
+    ]
+  },
+  "2 Kasim aksam darligi": {
+    "ozet": {
+      "gun": "2025-11-07",
+      "durum": "attention",
+      "karar": "demand_response_alert",
+      "oncelik": "yuksek",
+      "en_dar_saat": 18,
+      "en_dusuk_marj": 0.1774,
+      "en_dar_saat_temkinli": 18,
+      "en_dusuk_marj_temkinli": 0.14,
+      "esikler": {
+        "cok_nadir_alti": 0.207,
+        "nadir_alti": 0.246
+      },
+      "tahmin_zirve_mwh": 43463,
+      "eak_en_dar_saatte_mwh": 52837,
+      "model": "Hibrit (oran) + Open-Meteo",
+      "sapma_kaynagi": "30 gun",
+      "uyarilar": []
+    },
+    "cikti": {
+      "durum": "attention",
+      "karar": "demand_response_alert",
+      "oncelik": "yuksek",
+      "ozet": "2025-11-07 günü saat 18:00 için hesaplanan marj %17.74 (temkinli %14.00) seviyesinde olup, tarihsel nadirlik eşiklerinin altında kalması sebebiyle talep tarafı katılımı uyarısı verilmiştir.",
+      "gerekceler": [
+        "Saat 18:00'de tahmin edilen 43.463 MWh puant talebe karşılık 52.837 MWh EAK ile en düşük marj %17.74 olarak öngörülmektedir.",
+        "Hesaplanan marj, tarihsel nadirlik eşiği olan %20.70'in (çok nadir altı) altındadır. Kullanılan eşikler Mart 2025 sonrası marj dağılımının %1 ve %5'lik dilimlerini temsil eden tarihsel nadirlik göstergeleridir; fiziksel bir güvenilirlik sınırı değildir.",
+        "Temkinli marjın %14.00 seviyesine inmesi sebebiyle sistem dengesi için talep tarafı katılımı uyarısı (demand_response_alert) öncelikli olarak değerlendirilmiştir."
+      ],
+      "mevzuat_atiflari": [
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 4",
+          "neden": "Tüketim azaltma veya üretim artışını kapsayan yük alma teklif tanımları kapsamında talep tarafı esnekliğinin çerçevesini oluşturur."
+        },
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 72",
+          "neden": "Arz ve talep dengesi ile arz güvenilirliğinin sağlanmasında dengeleme mekanizmalarının ve talimatların değerlendirilmesini düzenler."
+        },
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 74",
+          "neden": "Sistemin tamamında arz ve talebin dengelenmesi amacıyla verilecek talimatların etiketlendirilmesi ve yönetilmesini kapsar."
+        }
+      ],
+      "veri_uyarilari": [],
+      "belirsizlik_notu": "Tahminler Hibrit (oran) + Open-Meteo modeli ve son 30 günlük sapma verileri kullanılarak üretilmiştir; hava koşulları ve ani talep dalgalanmalarına göre marj değişebilir."
+    },
+    "notlar": [],
+    "kiyas": {
+      "gun_mape_%": 1.42,
+      "resmi_plan_mape_%": 1.59,
+      "gercek_en_dar_saat": 18,
+      "gercek_en_dusuk_marj": 0.167
+    },
+    "getirilen": [
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 74",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 4",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 73",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 72"
+    ]
+  },
+  "3 Idari izin gunu": {
+    "ozet": {
+      "gun": "2026-05-25",
+      "durum": "normal",
+      "karar": "normal_operation",
+      "oncelik": "yok",
+      "en_dar_saat": 20,
+      "en_dusuk_marj": 0.3232,
+      "en_dar_saat_temkinli": 20,
+      "en_dusuk_marj_temkinli": 0.2949,
+      "esikler": {
+        "cok_nadir_alti": 0.207,
+        "nadir_alti": 0.246
+      },
+      "tahmin_zirve_mwh": 40712,
+      "eak_en_dar_saatte_mwh": 59929,
+      "model": "Hibrit (oran) + Open-Meteo",
+      "sapma_kaynagi": "30 gun",
+      "uyarilar": [
+        "Ozel gun (idari izin): test yilinda resmi plan ve hibrit model bu gunlerde daha yuksek hata yapti"
+      ]
+    },
+    "cikti": {
+      "durum": "normal",
+      "karar": "normal_operation",
+      "oncelik": "yok",
+      "ozet": "2026-05-25 günü için en dar saat 20:00'de en düşük marj %32,32 (temkinli %29,49) olarak öngörülmekte olup, tarihsel nadirlik eşiklerinin üzerinde güvenli seviyededir. Sistem normal işletme koşullarında takip edilmelidir.",
+      "gerekceler": [
+        "Saat 20:00 için hesaplanan en düşük marj %32,32 ve temkinli marj %29,49 seviyesindedir.",
+        "Kullanılan eşikler Mart 2025 sonrası marj dağılımının %1 ve %5'lik tarihsel nadirlik dilimleridir; fiziksel bir güvenilirlik sınırı teşkil etmez.",
+        "Temkinli marj dahil olmak üzere tüm değerler nadir altı eşiği olan %24,60'ın üzerindedir.",
+        "En dar saatte 59.929 MWh emre amade kapasiteye karşılık sistem zirve talebinin 40.712 MWh olması beklenmektedir."
+      ],
+      "mevzuat_atiflari": [
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 67/A",
+          "neden": "Sistem İşletmecisinin her gün saat 11:30'a kadar güncel verilere dayalı gün öncesi talep tahminini yayımlama yükümlülüğü."
+        },
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 72",
+          "neden": "Arz ve talep dengesi ile arz güvenilirliği kriterleri doğrultusunda dengeleme güç piyasası tekliflerinin değerlendirilmesi ve işletme güvenliğinin sağlanması."
+        }
+      ],
+      "veri_uyarilari": [
+        "Ozel gun (idari izin): test yilinda resmi plan ve hibrit model bu gunlerde daha yuksek hata yapti"
+      ],
+      "belirsizlik_notu": "Günün idari izin/özel gün statüsünde olması nedeniyle talep tahmin modellerinde sapma riski bulunmaktadır; operasyonel süreçte gerçekleşen tüketim yakından izlenmelidir."
+    },
+    "notlar": [],
+    "kiyas": {
+      "gun_mape_%": 8.3,
+      "resmi_plan_mape_%": 13.91,
+      "gercek_en_dar_saat": 20,
+      "gercek_en_dusuk_marj": 0.3716
+    },
+    "getirilen": [
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 72",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 73",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 71/A",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 70",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 67/A",
+      "EPDK 10711 sayılı Kurul Kararı eki: Şeffaflık Platformu veri listesi | BOLUM 7"
+    ]
+  },
+  "4 Duz resmi plan": {
+    "ozet": {
+      "gun": "2025-04-07",
+      "durum": "normal",
+      "karar": "normal_operation",
+      "oncelik": "yok",
+      "en_dar_saat": 20,
+      "en_dusuk_marj": 0.3659,
+      "en_dar_saat_temkinli": 20,
+      "en_dusuk_marj_temkinli": 0.3394,
+      "esikler": {
+        "cok_nadir_alti": 0.207,
+        "nadir_alti": 0.246
+      },
+      "tahmin_zirve_mwh": 43661,
+      "eak_en_dar_saatte_mwh": 68860,
+      "model": "Referans (3_model)",
+      "sapma_kaynagi": null,
+      "uyarilar": [
+        "Resmi plan eksik veya supheli (eksik, sifir veya duz); plansiz yedek model kullanildi",
+        "Belirsizlik bandi secilen modelden alindi; yedek model icin yaklasik"
+      ]
+    },
+    "cikti": {
+      "durum": "normal",
+      "karar": "normal_operation",
+      "oncelik": "yok",
+      "ozet": "2025-04-07 günü için en düşük marj saat 20:00'de %36,59 (temkinli marj %33,94) olarak tahmin edilmiştir. Marj değerleri nadirlik eşiklerinin üzerinde olup sistem normal işletme koşullarındadır.",
+      "gerekceler": [
+        "Saat 20:00'de beklenen en düşük marj (%36,59) ve temkinli marj (%33,94), nadir altı (%24,6) ve çok nadir altı (%20,7) eşiklerinin oldukça üzerindedir.",
+        "Kullanılan eşikler fiziksel güvenilirlik sınırı olmayıp Mart 2025 sonrası marj dağılımının %1 ve %5'lik tarihsel nadirlik dilimleridir.",
+        "Zirve talep tahmini 43.661 MWh iken en dar saatteki emre amade kapasite 68.860 MWh seviyesinde olup yeterli arz marjı mevcuttur."
+      ],
+      "mevzuat_atiflari": [
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 67/A",
+          "neden": "Sistem İşletmecisi tarafından yayımlanan gün öncesi talep tahminlerinin hazırlanması ve duyurulması yükümlülüğü."
+        },
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 72",
+          "neden": "Arz-talep dengesi ve arz güvenilirliği kriterleri doğrultusunda sistem işletmecisinin dengeleme güç piyasası süreçlerini yürütmesi."
+        }
+      ],
+      "veri_uyarilari": [
+        "Resmi plan eksik veya supheli (eksik, sifir veya duz); plansiz yedek model kullanildi",
+        "Belirsizlik bandi secilen modelden alindi; yedek model icin yaklasik"
+      ],
+      "belirsizlik_notu": "Resmi plan verisindeki eksiklik/şüphe nedeniyle tahminler plansız yedek model üzerinden üretilmiş ve belirsizlik aralığı yaklaşık olarak hesaplanmıştır."
+    },
+    "notlar": [],
+    "kiyas": {
+      "gun_mape_%": 2.34,
+      "resmi_plan_mape_%": 50.15,
+      "gercek_en_dar_saat": 20,
+      "gercek_en_dusuk_marj": 0.3643
+    },
+    "getirilen": [
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 72",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 73",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 71/A",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 70",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 67/A",
+      "EPDK 10711 sayılı Kurul Kararı eki: Şeffaflık Platformu veri listesi | BOLUM 7"
+    ]
+  },
+  "5 EAK gunes anomalisi": {
+    "ozet": {
+      "gun": "2026-05-01",
+      "durum": "normal",
+      "karar": "normal_operation",
+      "oncelik": "yok",
+      "en_dar_saat": 20,
+      "en_dusuk_marj": 0.3903,
+      "en_dar_saat_temkinli": 20,
+      "en_dusuk_marj_temkinli": 0.3648,
+      "esikler": {
+        "cok_nadir_alti": 0.207,
+        "nadir_alti": 0.246
+      },
+      "tahmin_zirve_mwh": 38166,
+      "eak_en_dar_saatte_mwh": 62598,
+      "model": "Hibrit (oran) + Open-Meteo",
+      "sapma_kaynagi": "30 gun",
+      "uyarilar": [
+        "Ozel gun (resmi tatil): test yilinda resmi plan ve hibrit model bu gunlerde daha yuksek hata yapti",
+        "EAK gunes bileseninde ani dusus: oglen 6905 MWh; referans 16929 MWh (son 14 gun medyani 16929, D-60..D-15 medyani 15701)"
+      ]
+    },
+    "cikti": {
+      "durum": "normal",
+      "karar": "normal_operation",
+      "oncelik": "yok",
+      "ozet": "2026-05-01 tarihinde sistem marjı yeterli düzeyde olup olağan işletim koşulları geçerlidir.",
+      "gerekceler": [
+        "Saat 20'de beklenen en düşük marj %39,03 (temkinli %36,48) olup, nadir eşiği olan %24,6'nın ve çok nadir eşiği olan %20,7'nin oldukça üzerindedir.",
+        "Kullanılan eşikler Mart 2025 sonrası marj dağılımının %1 ve %5'lik tarihsel nadirlik dilimlerini temsil etmekte olup fiziksel bir güvenilirlik sınırı değildir.",
+        "Tahmin edilen 38.166 MWh zirve talebe karşılık en dar saatte 62.598 MWh emre amade kapasite (EAK) ile yeterli arz marjı mevcuttur."
+      ],
+      "mevzuat_atiflari": [
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 67/A",
+          "neden": "Sistem İşletmecisi tarafından yayımlanan talep tahminine dayalı olarak gün öncesi denge değerlendirmesi yapılmıştır."
+        }
+      ],
+      "veri_uyarilari": [
+        "Ozel gun (resmi tatil): test yilinda resmi plan ve hibrit model bu gunlerde daha yuksek hata yapti",
+        "EAK gunes bileseninde ani dusus: oglen 6905 MWh; referans 16929 MWh (son 14 gun medyani 16929, D-60..D-15 medyani 15701)"
+      ],
+      "belirsizlik_notu": "1 Mayıs resmi tatili sebebiyle talep tahmininde model sapması riski ve öğle saatlerindeki güneş EAK düşüşü yakından izlenmelidir; ancak mevcut emre amade kapasite yeterli güvenlik payını sağlamaktadır."
+    },
+    "notlar": [],
+    "kiyas": {
+      "gun_mape_%": 1.18,
+      "resmi_plan_mape_%": 2.27,
+      "gercek_en_dar_saat": 20,
+      "gercek_en_dusuk_marj": 0.3697
+    },
+    "getirilen": [
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 72",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 73",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 71/A",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 70",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 67/A",
+      "EPDK 10711 sayılı Kurul Kararı eki: Şeffaflık Platformu veri listesi | BOLUM 7"
+    ]
+  },
+  "6 Yapay kapasite acigi": {
+    "ozet": {
+      "gun": "2025-07-28",
+      "durum": "action_required",
+      "karar": "activate_reserve",
+      "oncelik": "yuksek",
+      "en_dar_saat": 20,
+      "en_dusuk_marj": 0.0304,
+      "en_dar_saat_temkinli": 20,
+      "en_dusuk_marj_temkinli": -0.0101,
+      "esikler": {
+        "cok_nadir_alti": 0.207,
+        "nadir_alti": 0.246
+      },
+      "tahmin_zirve_mwh": 64109,
+      "eak_en_dar_saatte_mwh": 60733,
+      "model": "Hibrit (oran) + Open-Meteo",
+      "sapma_kaynagi": "30 gun",
+      "uyarilar": [
+        "YAPAY SENARYO: EAK x 0.9421 (EAK kaybi %5.8)"
+      ]
+    },
+    "cikti": {
+      "durum": "action_required",
+      "karar": "activate_reserve",
+      "oncelik": "yuksek",
+      "ozet": "28 Temmuz 2025 günü için saat 20:00'de marj %3,04'e, temkinli marj ise -%1,01'e gerileyerek tarihsel çok nadir altı eşiğinin (%20,7) oldukça altına inmektedir. Sistem güvenliğini sağlamak amacıyla yüksek öncelikle rezerv aktivasyonu gerekmektedir.",
+      "gerekceler": [
+        "Saat 20:00'de tahmin edilen marj (%3,04) ve temkinli marj (-%1,01), çok nadir altı eşiği olan %20,7'nin altındadır.",
+        "Kullanılan eşikler fiziksel bir güvenilirlik sınırı olmayıp Mart 2025 sonrası marj dağılımının tarihsel nadirlik dilimleridir (%1 ve %5).",
+        "Pik saatteki EAK (60.733 MWh), tahmin edilen zirve talebin (64.109 MWh) altında kalarak açık oluşturmaktadır."
+      ],
+      "mevzuat_atiflari": [
+        {
+          "belge": "Elektrik Şebeke Yönetmeliği",
+          "madde": "MADDE 65",
+          "neden": "İletim sisteminin işletme güvenliğini korumak amacıyla üretim faaliyeti gösteren tüzel kişilere ve kullanıcılara acil durum bildirimi ve talimatı verilmesi."
+        },
+        {
+          "belge": "Elektrik Şebeke Yönetmeliği",
+          "madde": "MADDE 62",
+          "neden": "Sistem frekansının ve işletme güvenliğinin korunması için acil durum önlemlerinin uygulanması esasları."
+        },
+        {
+          "belge": "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği",
+          "madde": "MADDE 67/A",
+          "neden": "Sistem İşletmecisinin en güncel verilere dayalı gün öncesi talep tahmini yayımlama ve planlama yükümlülüğü."
+        }
+      ],
+      "veri_uyarilari": [
+        "YAPAY SENARYO: EAK x 0.9421 (EAK kaybi %5.8)"
+      ],
+      "belirsizlik_notu": "30 günlük sapma kaynağına dayalı hibrit tahmin modeli kullanılmış olup yapay senaryo kaynaklı %5,8'lik EAK kaybı arz açığı riskini artırmaktadır."
+    },
+    "notlar": [],
+    "kiyas": {
+      "gun_mape_%": 4.15,
+      "resmi_plan_mape_%": 1.55,
+      "gercek_en_dar_saat": 20,
+      "gercek_en_dusuk_marj": 0.0938
+    },
+    "getirilen": [
+      "Elektrik Şebeke Yönetmeliği | MADDE 67",
+      "Elektrik Şebeke Yönetmeliği | MADDE 62",
+      "Elektrik Şebeke Yönetmeliği | MADDE 65",
+      "Elektrik Şebeke Yönetmeliği | MADDE 65",
+      "Elektrik Piyasası Dengeleme ve Uzlaştırma Yönetmeliği | MADDE 67/A",
+      "EPDK 10711 sayılı Kurul Kararı eki: Şeffaflık Platformu veri listesi | BOLUM 7"
+    ]
+  }
+}

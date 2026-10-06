@@ -1,0 +1,3 @@
+metric,value
+baseline_rmspe,0.0837647270056018
+lstm_rmspe,0.027334567483591043

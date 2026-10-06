@@ -1,0 +1,8 @@
+,RMSPE,MAPE_%,MAE_MWh,gorev
+Naif: bir onceki saat,0.04208,3.21722,1292.84179,1 saat ileri
+Naif: gecen hafta ayni saat,0.08549,4.96541,1937.76957,gun oncesi / referans
+Resmi Yuk Tahmin Plani,0.03589,2.59825,1043.52373,gun oncesi / referans
+XGBoost 1 saat ileri,0.01327,0.96017,400.78847,1 saat ileri
+XGBoost gun oncesi (gerceklesen sicaklik),0.0376,2.86656,1199.25497,gun oncesi / referans
+XGBoost gun oncesi (dunun sicakligi),0.03756,2.84962,1189.37024,gun oncesi / referans
+LSTM 1 saat ileri,0.01066,0.78803,317.19933,1 saat ileri
